@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import { Button, StyleSheet, View } from 'react-native';
 
-export default class ButtonBasics extends Component {
+export default class Kereso extends Component {
   _onPressButton() {
     alert('You tapped the button!')
   }
+  
 
   render() {
     return (
