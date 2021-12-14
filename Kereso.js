@@ -1,39 +1,101 @@
-import React, { Component } from 'react';
-import { Button, StyleSheet, View } from 'react-native';
+import React, { Component,setState } from 'react';
+import { Button, StyleSheet, View,FlatList,Image,Text} from 'react-native';
 
-export default class Kereso extends Component {
-  _onPressButton() {
-    alert('You tapped the button!')
+export default class Kereso extends React.Component {
+  constructor(props){
+    super(props);
+    this.state ={ isLoading: true, dataSource:[]}
+  }
+
+  Fantasy = () => {
+    return fetch('http://192.168.7.115:3000/Fantasy')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({dataSource:responseJson});
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+  Drama = () => {
+    return fetch('http://192.168.7.115:3000/Drama')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({dataSource:responseJson});
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+  Comedy = () => {
+    return fetch('http://192.168.7.115:3000/Comedy')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({dataSource:responseJson});
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
+  }
+
+  Action = () => {
+    return fetch('http://192.168.7.115:3000/Action')
+      .then((response) => response.json())
+      .then((responseJson) => {
+
+        this.setState({dataSource:responseJson});
+      })
+      .catch((error) =>{
+        console.error(error);
+      });
   }
   
 
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Press Me"
-          />
-        </View>
-        <View style={styles.buttonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="Press Me"
-            color="#841584"
-          />
-        </View>
         <View style={styles.alternativeLayoutButtonContainer}>
-          <Button
-            onPress={this._onPressButton}
-            title="This looks great!"
+        <Button
+            onPress={this.Fantasy}
+            title="Fantasy"
           />
           <Button
-            onPress={this._onPressButton}
-            title="OK!"
-            color="#841584"
+            onPress={this.Action}
+            title="Action"
+          />
+          <Button
+            onPress={this.Drama}
+            title="Drama"
+          />
+          <Button
+            onPress={this.Comedy}
+            title="Comedy"
           />
         </View>
+
+        {this.state.dataSource ? 
+          <FlatList
+          data={this.state.dataSource}  
+          renderItem = {({item}) =>
+            <View >
+            <Image  source={{uri:'http://192.168.7.115:3000/'+item.anime_id+'.jpg'}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} />  
+            <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
+            <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Megjelenés: {item.anime_megjdatum.split('T')[0].trim()} </Text>
+            <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Műfaj: {item.anime_mufaj} </Text>
+            <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Évadok száma: {item.anime_evadsz} db </Text>
+            
+            </View>
+            
+          }
+          
+          keyExtractor={item => item.anime_id}
+         />
+        : null}
       </View>
     );
   }
