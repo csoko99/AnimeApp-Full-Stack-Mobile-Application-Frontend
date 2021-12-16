@@ -3,7 +3,8 @@ import { Button, View } from 'react-native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { NavigationContainer } from '@react-navigation/native';
 import Anime from './Anime';
-import Kereso from './Kereso'
+import Mufaj from './Mufaj'
+import Megjelenes from './Megjelenes'
 
 function Animeklap({ navigation }) {
   return (
@@ -11,9 +12,15 @@ function Animeklap({ navigation }) {
   );
 }
 
-function Kereseslap({ navigation }) {
+function Mufajlap({ navigation }) {
   return (
-    <Kereso/>
+    <Mufaj/>
+  );
+}
+
+function Megjeleneslap({ navigation }) {
+  return (
+    <Megjelenes/>
   );
 }
 
@@ -24,7 +31,8 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator initialRouteName="Home">
         <Drawer.Screen name="Animék" component={Animeklap} />
-        <Drawer.Screen name="Keresés" component={Kereseslap} />
+        <Drawer.Screen name="Műfaj" component={Mufajlap} />
+        <Drawer.Screen name="Megjelenés" component={Megjeleneslap} />
       </Drawer.Navigator>
     </NavigationContainer>
   );
