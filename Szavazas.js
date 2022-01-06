@@ -16,7 +16,7 @@ export default class Szavazas extends React.Component {
     }
     
 
-  fetch("http://192.168.2.109:3000/szavazatfelvitel", {
+  fetch("http://192.168.1.105:3000/szavazatfelvitel", {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -30,7 +30,7 @@ export default class Szavazas extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://192.168.2.109:3000/animek')
+    return fetch('http://192.168.1.105:3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -66,7 +66,7 @@ export default class Szavazas extends React.Component {
           renderItem={({item}) => 
 
           <View >
-        <Image  source={{uri: 'http://192.168.2.109:3000/'+item.anime_id+'.jpg'}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} /> 
+        <Image  source={{uri: 'http://192.168.1.105:3000/'+item.anime_id+'.jpg'}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} /> 
           <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.anime_nev} </Text>
            
 
