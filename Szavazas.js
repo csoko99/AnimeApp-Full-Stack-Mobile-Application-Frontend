@@ -16,7 +16,7 @@ export default class Szavazas extends React.Component {
     }
     
 
-  fetch("http://192.168.1.105:3000/szavazatfelvitel", {
+  fetch("http://192.168.2.109:3000/szavazatfelvitel", {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -30,7 +30,7 @@ export default class Szavazas extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://192.168.1.105:3000/animek')
+    return fetch('http://192.168.2.109:3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -66,16 +66,17 @@ export default class Szavazas extends React.Component {
           renderItem={({item}) => 
 
           <View >
-        <Image  source={{uri: 'http://192.168.1.105:3000/'+item.anime_id+'.jpg'}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} /> 
-          <Text style={{color:"brown",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.anime_nev} </Text>
+        <Image  source={{uri: 'http://192.168.2.109:3000/'+item.anime_id+'.jpg'}} style={{width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} /> 
+          <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.anime_nev} </Text>
            
 
           <TouchableOpacity
-        style={styles.kekgomb}
+        style={styles.lilagomb}
         onPress={async ()=>this.szavazat(item.anime_id)}
       >
-        <Text style={{color:"white",fontWeight:"bold",fontSize:15}}  >Erre szavazok</Text>
+        <Text style={{color:"black",fontWeight:"bold",fontSize:15}}  >Erre szavazok</Text>
       </TouchableOpacity>
+      <Text></Text>
           </View>
         
         }
@@ -90,12 +91,13 @@ export default class Szavazas extends React.Component {
 
 const styles = StyleSheet.create({
   
-  kekgomb: {
+  lilagomb: {
     alignItems: "center",
-    backgroundColor: "blue",
+    backgroundColor: "purple",
     padding: 10,
     width:300,
     marginLeft:"auto",
     marginRight:"auto",
+    borderRadius:10,
   }
 });

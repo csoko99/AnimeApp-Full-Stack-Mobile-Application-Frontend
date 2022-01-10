@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Button, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity } from 'react-native';
 
+
 export default class Anime extends React.Component {
 
   constructor(props){
@@ -9,7 +10,7 @@ export default class Anime extends React.Component {
   }
 
   componentDidMount(){
-    return fetch('http://192.168.1.105:3000/animek')
+    return fetch('http://192.168.2.109:3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -44,7 +45,7 @@ export default class Anime extends React.Component {
     return(
      
 
-      <View style={{flex: 1, paddingTop:20}}>
+      <View style={{flex: 1, paddingTop:20, backgroundColor:"F0F8FF"}}>
         <FlatList
           data={this.state.dataSource}
           renderItem={({item}) => 
@@ -53,12 +54,12 @@ export default class Anime extends React.Component {
           
           
       <View >
-          <Image  source={{uri:'http://192.168.1.105:3000/'+item.anime_id+'.jpg'}} style={{width:300,height:300,marginLeft:"auto",marginRight:"auto"}} />  
+          <Image  source={{uri:'http://192.168.2.109:3000/'+item.anime_id+'.jpg'}} style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Megjelenés: {item.anime_megjdatum.split('T')[0].trim()} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Műfaj: {item.anime_mufaj} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Évadok száma: {item.anime_evadsz} db </Text>
-          
+          <Text> </Text>
           </View>
 
         
