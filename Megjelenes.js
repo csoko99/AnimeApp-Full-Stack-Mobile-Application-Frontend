@@ -9,7 +9,7 @@ export default class Megjelenes extends React.Component {
   }
 
   ketezer = () => {
-    return fetch('http://192.168.2.109:3000/ketezer')
+    return fetch('http://192.168.7.102:3000/ketezer')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -21,7 +21,7 @@ export default class Megjelenes extends React.Component {
   }
 
   ezertiz = () => {
-    return fetch('http://192.168.2.109:3000/ezertiz')
+    return fetch('http://192.168.7.102:3000/ezertiz')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -33,7 +33,7 @@ export default class Megjelenes extends React.Component {
   }
 
   ezerhusz = () => {
-    return fetch('http://192.168.2.109:3000/ezerhusz')
+    return fetch('http://192.168.7.102:3000/ezerhusz')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -45,7 +45,7 @@ export default class Megjelenes extends React.Component {
   }
 
   huszfelett = () => {
-    return fetch('http://192.168.2.109:3000/huszfelett')
+    return fetch('http://192.168.7.102:3000/huszfelett')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -85,7 +85,7 @@ export default class Megjelenes extends React.Component {
           data={this.state.dataSource}  
           renderItem = {({item}) =>
             <View >
-            <Image  source={{uri:'http://192.168.2.109:3000/'+item.anime_id+'.jpg'}} style={{width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
+            <Image  source={{uri:'http://192.168.7.102:3000/'+item.anime_id+'.jpg'}} style={{width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
             <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
             <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Megjelenés: {item.anime_megjdatum.split('T')[0].trim()} </Text>
             <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Műfaj: {item.anime_mufaj} </Text>
