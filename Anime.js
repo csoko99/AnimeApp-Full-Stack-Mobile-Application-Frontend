@@ -9,16 +9,16 @@ export default class Anime extends React.Component {
     this.state ={ isLoading: true}
   }
 
-  kattintas=(sorszam, nev, mufaj, datum, evad)=>{
+  kattintas=(sorszam, nev, mufaj, datum, evad, leiras)=>{
     //alert(sorszam)
     //alert(nev)
    
-    this.props.navigacio.navigate('Seged',{aktid:sorszam, aktnev:nev, aktmufaj:mufaj, aktdatum:datum, aktevad:evad })
+    this.props.navigacio.navigate('Seged',{aktid:sorszam, aktnev:nev, aktmufaj:mufaj, aktdatum:datum, aktevad:evad, aktleiras:leiras })
     
   }
 
   componentDidMount(){
-    return fetch('http://192.168.7.102:3000/animek')
+    return fetch('http://192.168.1.104:3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -62,8 +62,8 @@ export default class Anime extends React.Component {
           
           
       <View >
-        <TouchableOpacity onPress={()=>this.kattintas(item.anime_id, item.anime_nev, item.anime_mufaj, item.anime_megjdatum, item.anime_evadsz)}>
-          <Image  source={{uri:'http://192.168.7.102:3000/'+item.anime_id+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
+        <TouchableOpacity onPress={()=>this.kattintas(item.anime_id, item.anime_nev, item.anime_mufaj, item.anime_megjdatum, item.anime_evadsz, item.leiras)}>
+          <Image  source={{uri:'http://192.168.1.104:3000/'+item.anime_id+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} />  
           </TouchableOpacity>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Név: {item.anime_nev} </Text>
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >Megjelenés: {item.anime_megjdatum.split('T')[0].trim()} </Text>
