@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, TouchableHighlight, TouchableOpacity, TouchableNativeFeedback, TouchableWithoutFeedback, View, Image, ScrollView } from 'react-native';
 
-const ipcim="192.168.1.104";
+const IP = require('./ipcim.js');
+//const ipcim="192.168.1.104";
 
 export default class Touchables extends Component {
   constructor(props){
@@ -9,7 +10,7 @@ export default class Touchables extends Component {
     this.state ={ isLoading: true}
   }
   componentDidMount(){
-    return fetch('http://'+ipcim+':3000/animek')
+    return fetch('http://'+IP.ipcim+':3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -31,7 +32,7 @@ export default class Touchables extends Component {
     return (
       
       <View style={styles.container}>
-        <Image  source={{uri:'http://'+ipcim+':3000/'+this.props.route.params.aktid+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} /> 
+        <Image  source={{uri:'http://'+IP.ipcim+':3000/'+this.props.route.params.aktid+'.jpg'}}   style={{ width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} /> 
         
           <Text>Leírás:</Text>
           <ScrollView  contentContainerStyle={styles.leiras}>

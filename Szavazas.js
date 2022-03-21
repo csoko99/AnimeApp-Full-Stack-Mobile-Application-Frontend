@@ -1,7 +1,8 @@
 import React from 'react';
 import {StyleSheet, FlatList, ActivityIndicator, Text, View, Image , TouchableOpacity } from 'react-native';
 
-const ipcim="192.168.1.104";
+const IP = require('./ipcim.js');
+//const ipcim="192.168.1.104";
 
 export default class Szavazas extends React.Component {
 
@@ -18,7 +19,7 @@ export default class Szavazas extends React.Component {
     }
     
 
-  fetch("http://"+ipcim+":3000/szavazatfelvitel", {
+  fetch("http://"+IP.ipcim+":3000/szavazatfelvitel", {
       method: "POST",
       body: JSON.stringify(bemenet),
       headers: {"Content-type": "application/json; charset=UTF-8"}
@@ -32,7 +33,7 @@ export default class Szavazas extends React.Component {
 
 
   componentDidMount(){
-    return fetch('http://'+ipcim+':3000/animek')
+    return fetch('http://'+IP.ipcim+':3000/animek')
       .then((response) => response.json())
       .then((responseJson) => {
 
@@ -68,7 +69,7 @@ export default class Szavazas extends React.Component {
           renderItem={({item}) => 
 
           <View >
-        <Image  source={{uri: 'http://'+ipcim+':3000/'+item.anime_id+'.jpg'}} style={{width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} /> 
+        <Image  source={{uri: 'http://'+IP.ipcim+':3000/'+item.anime_id+'.jpg'}} style={{width:225, height:314 ,marginLeft:"auto",marginRight:"auto", borderRadius:10}} /> 
           <Text style={{color:"black",fontSize:20,textAlign:"center",marginTop:15,marginBottom:5}}   >{item.anime_nev} </Text>
            
 
