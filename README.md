@@ -1,8 +1,7 @@
 **AnimeApp Frontend – React Native Mobile App**
 
-This repository contains the mobile frontend for the AnimeApp project, created as part of my vocational final exam. The application is inspired by platforms like MyAnimeList, allowing users to browse, search, and rate anime content.
-
-This mobile client is built with React Native and Expo, and was designed to communicate with a custom Node.js backend.
+📱 About
+A mobile app for browsing, searching, and rating anime, developed as part of my professional final exam. Inspired by MyAnimeList, I handled both the frontend and backend development.
 
 ⚠️ Note: Due to the passage of time, some components or dependencies may be outdated and require updates to run successfully.
 
